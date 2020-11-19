@@ -1,0 +1,16 @@
+{
+  "name": "agan-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.9.6",
+    "vuepress": "^1.7.1"
+  }
+}
