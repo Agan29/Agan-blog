@@ -2,25 +2,29 @@
   <div class="ag-footer">
     <div class="">余</div>
     <div class="supporting">-</div>
-    <div class="supporting">{{ date }}</div>
+    <div class="supporting">距离{{ newYear }}年还剩下 {{ date }} 天</div>
   </div>
 </template>
 
 <script>
-import dayjs from "dayjs";
+import dayjs from "dayjs"
+var duration = require("dayjs/plugin/duration")
+dayjs.extend(duration)
 export default {
   name: "GlobalFooter",
   data() {
+    this.newYear = dayjs().year() + 1
+    this.futureDate = dayjs(`${this.newYear}-01-01`)
     return {
-      date: "",
-    };
+      date: ""
+    }
   },
   mounted() {
-    this.date = dayjs().format("YYYY年MM月");
-  },
-};
+    this.date = this.futureDate.diff(dayjs(), "day")
+  }
+}
 </script>
-<style lang="styl"  scoped>
+<style lang="stylus" scoped>
 .ag-footer {
   display: grid;
   grid-template-rows: auto auto auto;
