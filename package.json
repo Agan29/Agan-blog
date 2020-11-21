@@ -12,5 +12,6 @@
   "dependencies": {
     "dayjs": "^1.9.6",
     "vuepress": "^1.7.1"
-  }
+  },
+  "devDependencies": {}
 }

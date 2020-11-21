@@ -1,15 +1,12 @@
-:root{
-    
-    
-    }
-
-*,*:before,*:after{
-    box-sizing: border-box;
-}
-
-body{
-    margin: 0;
-    background-color $bgColor
-}
-
- 
+@require './mode'
+// reset css styles
+*, *:before, *:after
+    box-sizing: border-box
+body
+    margin: 0
+    background-color: $bgColor
+    font-size: 14px
+ul, li
+    margin: 0
+    padding: 0
+    list-style: none
