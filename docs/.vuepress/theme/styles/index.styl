@@ -1,11 +1,13 @@
-@require './mode'
+// @require './mode'
 // reset css styles
 *, *:before, *:after
     box-sizing: border-box
 body
     margin: 0
-    background-color: $bgColor
+    background-color: var(--bg-color)
     font-size: 14px
+    color: var(--main-color)
+    transition: color 0.3s ease
 ul, li
     margin: 0
     padding: 0

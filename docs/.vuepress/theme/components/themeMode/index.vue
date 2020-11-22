@@ -73,25 +73,42 @@ export default {
   .current-mode
     padding: 0 4px
     cursor: pointer
-    color: $mianColor
+    color: var(--main-color)
     opacity: 0.5
     transition: 0.3s all ease
     font-size: 14px
+    position: relative
+    &::after
+      content: ''
+      display: block
+      background: var(--main-color)
+      opacity: 0
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      transition: 0.3s all ease
+      border-radius: 4px
     &:hover
-      background: #ece2d4
+      &::after
+        background: var(--main-color)
+        opacity: 0.1
     &:active
-      opacity: 0.8
-  .select-mode
-    display: block
-    position: absolute
-    padding: 6px 8px
-    width: 100px
-    text-align: center
-    left: 50%
-    transform: translateX(-50%)
-    li
-      opacity: 0.5
-      padding: 4px 0
-      cursor: pointer
-      font-size: 14px
+      &::after
+        background: var(--main-color)
+        opacity: 0.3
+.select-mode
+  display: block
+  position: absolute
+  padding: 6px 8px
+  width: 100px
+  text-align: center
+  left: 50%
+  transform: translateX(-50%)
+  li
+    opacity: 0.5
+    padding: 4px 0
+    cursor: pointer
+    font-size: 14px
 </style>
