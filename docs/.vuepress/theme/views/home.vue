@@ -8,14 +8,20 @@
 </template>
 
 <script>
+import { handleAnimate } from "@theme/components/mixins"
+
 export default {
   name: "home",
   components: {},
+  mixins: [handleAnimate],
   data() {
     return {
       nav: [],
-      newPos: {},
-      oldPos: {},
+      animateRef: null,
+      animateOpt: {
+        blur: 10,
+        duration: 700,
+      },
     }
   },
   created() {
@@ -24,44 +30,10 @@ export default {
     this.options = this.$site
   },
   mounted() {
-    const { top, left } = this.$refs.logo.getBoundingClientRect()
-    this.oldPos = { top, left }
+    this.animateRef = this.$refs.logo
   },
-  methods: {
-    handleAnimate() {
-      const { newPos, oldPos } = this
-      const keyframes = [
-        {
-          transform: `translate(${oldPos.left - newPos.left}px,${
-            oldPos.top - newPos.top
-          }px)`,
-          filter: "blur(10px)",
-        },
-        {
-          transform: `translate(0,0)`,
-          filter: "blur(0px)",
-        },
-      ]
-      const { logo } = this.$refs
-      logo.animate(keyframes, {
-        duration: 700,
-        fill: "forwards",
-        easing: "ease",
-      })
-    },
-  },
-  watch: {
-    "$frontmatter.home": function () {
-      const { top, left } = this.$refs.logo.getBoundingClientRect()
-
-      if (Object.keys(this.newPos).length <= 0) {
-        this.newPos = { top, left }
-      } else {
-        ;[this.newPos, this.oldPos] = [this.oldPos, this.newPos]
-      }
-      this.handleAnimate()
-    },
-  },
+  methods: {},
+  watch: {},
 }
 </script>
 <style lang="stylus" scoped>

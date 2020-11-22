@@ -12,6 +12,7 @@
 <script>
 import ThemeMode from "@theme/components/themeMode"
 import AgRouteLink from "@theme/global-components/AgRouteLink"
+import { handleAnimate } from "@theme/components/mixins"
 export default {
   name: "AgHeader",
   components: {
@@ -26,51 +27,20 @@ export default {
         : nav
     },
   },
+  mixins: [handleAnimate],
   data() {
     return {
-      newPos: {},
-      oldPos: {},
+      animateRef: null,
+      animateOpt: {
+        blur: 3,
+        duration: 600,
+      },
     }
   },
   mounted() {
-    const { top, left } = this.$refs.agnav.getBoundingClientRect()
-    this.oldPos = { top, left }
+    this.animateRef = this.$refs.agnav
   },
-  methods: {
-    handleAnimate() {
-      const { newPos, oldPos } = this
-      const keyframes = [
-        {
-          transform: `translate(${oldPos.left - newPos.left}px,${
-            oldPos.top - newPos.top
-          }px)`,
-          filter: "blur(3px)",
-        },
-        {
-          transform: `translate(0,0)`,
-          filter: "blur(0px)",
-        },
-      ]
-      const { agnav } = this.$refs
-      agnav.animate(keyframes, {
-        duration: 700,
-        fill: "forwards",
-        easing: "ease",
-      })
-    },
-  },
-  watch: {
-    "$frontmatter.home": function () {
-      const { top, left } = this.$refs.agnav.getBoundingClientRect()
-
-      if (Object.keys(this.newPos).length <= 0) {
-        this.newPos = { top, left }
-      } else {
-        ;[this.newPos, this.oldPos] = [this.oldPos, this.newPos]
-      }
-      this.handleAnimate()
-    },
-  },
+  methods: {},
 }
 </script>
 <style lang='stylus' scoped>
