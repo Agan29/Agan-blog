@@ -1,8 +1,8 @@
 <template>
-  <div class="ag-container" :class="{ 'is-home': isHome }">
+  <div class="ag-container" :class="{ 'is-page': !isHome }">
     <AgHeader />
     <div class="ag-body">
-      <Home v-if="$frontmatter.home" />
+      <Home />
     </div>
     <div cclass="ag-footer-warp">
       <GlobalFooter />
@@ -47,4 +47,17 @@ export default {
   display: grid
   grid-template-rows: auto 1fr auto
   place-items: center
+.ag-header
+  transition: all 0.3s 0.1s ease
+.is-page
+  .ag-header
+    padding-top: 24px
+  >>> .ag-nav
+    justify-self: end
+  .ag-home
+    position: absolute
+    left: 24px
+    top: 12px
+    >>> h1
+      font-size: 18px
 </style>

@@ -1,31 +1,73 @@
 <template>
-  <div class="ag-home">
+  <div class="ag-home" ref="logo">
     <h1>{{ options.title }}</h1>
     <h4>{{ options.subtitle }}</h4>
 
-    <Content />
+    <!-- <Content /> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: "layout",
+  name: "home",
   components: {},
   data() {
     return {
       nav: [],
+      newPos: {},
+      oldPos: {},
     }
   },
   created() {
-    this.options = this.$frontmatter
+    console.log(this.$site)
+    // this.options = this.$frontmatter
+    this.options = this.$site
   },
-  mounted() {},
-  methods: {},
+  mounted() {
+    const { top, left } = this.$refs.logo.getBoundingClientRect()
+    this.oldPos = { top, left }
+  },
+  methods: {
+    handleAnimate() {
+      const { newPos, oldPos } = this
+      const keyframes = [
+        {
+          transform: `translate(${oldPos.left - newPos.left}px,${
+            oldPos.top - newPos.top
+          }px)`,
+          filter: "blur(10px)",
+        },
+        {
+          transform: `translate(0,0)`,
+          filter: "blur(0px)",
+        },
+      ]
+      const { logo } = this.$refs
+      logo.animate(keyframes, {
+        duration: 700,
+        fill: "forwards",
+        easing: "ease",
+      })
+    },
+  },
+  watch: {
+    "$frontmatter.home": function () {
+      const { top, left } = this.$refs.logo.getBoundingClientRect()
+
+      if (Object.keys(this.newPos).length <= 0) {
+        this.newPos = { top, left }
+      } else {
+        ;[this.newPos, this.oldPos] = [this.oldPos, this.newPos]
+      }
+      this.handleAnimate()
+    },
+  },
 }
 </script>
 <style lang="stylus" scoped>
 .ag-home
   place-items: center
+  transform: translateX(0)
   .ag-header
     display: flex
     padding: 6vh 0 2vh 0

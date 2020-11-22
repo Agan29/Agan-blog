@@ -1,6 +1,6 @@
 <template>
   <div class="ag-header">
-    <nav class="ag-nav">
+    <nav class="ag-nav" ref="agnav">
       <AgRouteLink v-for="n in computedNav" :to="n.link">
         {{ n.text }}
       </AgRouteLink>
@@ -27,10 +27,50 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      newPos: {},
+      oldPos: {},
+    }
   },
-  mounted() {},
-  methods: {},
+  mounted() {
+    const { top, left } = this.$refs.agnav.getBoundingClientRect()
+    this.oldPos = { top, left }
+  },
+  methods: {
+    handleAnimate() {
+      const { newPos, oldPos } = this
+      const keyframes = [
+        {
+          transform: `translate(${oldPos.left - newPos.left}px,${
+            oldPos.top - newPos.top
+          }px)`,
+          filter: "blur(3px)",
+        },
+        {
+          transform: `translate(0,0)`,
+          filter: "blur(0px)",
+        },
+      ]
+      const { agnav } = this.$refs
+      agnav.animate(keyframes, {
+        duration: 700,
+        fill: "forwards",
+        easing: "ease",
+      })
+    },
+  },
+  watch: {
+    "$frontmatter.home": function () {
+      const { top, left } = this.$refs.agnav.getBoundingClientRect()
+
+      if (Object.keys(this.newPos).length <= 0) {
+        this.newPos = { top, left }
+      } else {
+        ;[this.newPos, this.oldPos] = [this.oldPos, this.newPos]
+      }
+      this.handleAnimate()
+    },
+  },
 }
 </script>
 <style lang='stylus' scoped>
@@ -45,7 +85,7 @@ export default {
 .ag-nav
   // width: 100%
   grid-column-start: 2
-  justify-self: end
+  justify-self: center
   // text-align: right
   a
     font-size: 14px
@@ -63,8 +103,4 @@ export default {
   // position: absolute
   // right: 3vw
   // top: 6vh
-.is-home
-  .ag-nav
-    justify-self: center
-    // text-align: center
 </style>
