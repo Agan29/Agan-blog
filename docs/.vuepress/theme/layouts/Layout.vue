@@ -1,8 +1,8 @@
 <template>
   <div class="ag-container" :class="{ 'is-page': !isHome }">
-    <AgHeader />
+    <AgHeader ref="agHeader" />
     <div class="ag-body">
-      <Home />
+      <Home ref="home" />
     </div>
     <div cclass="ag-footer-warp">
       <GlobalFooter />
@@ -16,6 +16,7 @@ import AgHeader from "@theme/components/AgHeader"
 
 import Home from "@theme/views/home"
 
+import { handleWatch } from "./_utils"
 export default {
   name: "layout",
   components: {
@@ -24,7 +25,9 @@ export default {
     Home,
   },
   data() {
-    return {}
+    return {
+      handleAnimate: true,
+    }
   },
   computed: {
     isHome() {
@@ -34,11 +37,36 @@ export default {
   created() {
     this.options = this.$frontmatter
   },
+  // updated 后才能计算dom
+  updated() {
+    this.$nextTick(function () {
+      if (this.handleAnimate) {
+        handleWatch({ component: this.$refs.home })
+        handleWatch({ component: this.$refs.agHeader })
+        // 动画执行完成修改值
+        this.handleAnimate = false
+      }
+      // Code that will run only after the
+      // entire view has been re-rendered
+    })
+  },
   mounted() {
-    console.log(this.$page)
-    console.log(this.$site.themeConfig)
+    // console.log(this.$page)
+    // console.log(this.$site.themeConfig)
   },
   methods: {},
+
+  watch: {
+    // 监听是不是跳转或者从 home 页面跳转过来
+    "$frontmatter.home": function (newV, oldV) {
+      // undefined === undefined 的时候表示不是来自 home 或者跳转到 home
+      if (newV === oldV) {
+        this.handleAnimate = false
+      } else {
+        this.handleAnimate = true
+      }
+    },
+  },
 }
 </script>
 <style lang="stylus" scoped>

@@ -29,12 +29,13 @@ export default {
   },
   mixins: [handleAnimate],
   data() {
+    this.animateRef = null
+    this.animateOpt = {
+      blur: 3,
+      duration: 600,
+    }
     return {
-      animateRef: null,
-      animateOpt: {
-        blur: 3,
-        duration: 600,
-      },
+      // animate mixin 需要 ref 以及animate配置
     }
   },
   mounted() {

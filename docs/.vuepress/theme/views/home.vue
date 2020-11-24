@@ -18,10 +18,10 @@ export default {
     return {
       nav: [],
       animateRef: null,
-      animateOpt: {
+      animateOpt: Object.freeze({
         blur: 10,
         duration: 700,
-      },
+      }),
     }
   },
   created() {
@@ -30,6 +30,7 @@ export default {
     this.options = this.$site
   },
   mounted() {
+    // 需要执行动画的dom
     this.animateRef = this.$refs.logo
   },
   methods: {},
