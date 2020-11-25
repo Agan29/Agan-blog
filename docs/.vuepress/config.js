@@ -1,5 +1,5 @@
 module.exports = {
-  base: "/agan-blog/",
+  base: "/Agan-blog/",
   title: "AGAN",
 
   description: ["悠悠的古城中 听美人奏琴声"],
