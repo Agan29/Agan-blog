@@ -32,6 +32,7 @@ export default {
   padding: 16px 0 32px 0
   font-size: 14px
   color: var(--main-color)
+  line-height: 1
   .supporting
     opacity: 0.32
 </style>

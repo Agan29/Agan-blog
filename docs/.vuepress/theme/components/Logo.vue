@@ -11,7 +11,7 @@
 import { handleAnimate } from "@theme/components/mixins"
 import { random } from "lodash"
 export default {
-  name: "home",
+  name: "logo",
   components: {},
   mixins: [handleAnimate],
   data() {

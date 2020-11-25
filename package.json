@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "dayjs": "^1.9.6",
+    "lodash": "^4.17.20",
     "vuepress": "^1.7.1"
   },
   "devDependencies": {}

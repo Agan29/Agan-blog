@@ -3,6 +3,9 @@
     <AgHeader ref="agHeader" />
     <div class="ag-body">
       <Home ref="home" />
+      <transition name="fade" mode="in-out">
+        <AgPage v-if="$route.path !== '/'"></AgPage>
+      </transition>
     </div>
     <div cclass="ag-footer-warp">
       <GlobalFooter />
@@ -15,6 +18,7 @@ import GlobalFooter from "@theme/global-components/GlobalFooter"
 import AgHeader from "@theme/components/AgHeader"
 
 import Home from "@theme/views/home"
+import AgPage from "@theme/views/AgPage"
 
 import { handleWatch } from "./_utils"
 export default {
@@ -23,6 +27,7 @@ export default {
     GlobalFooter,
     AgHeader,
     Home,
+    AgPage,
   },
   data() {
     return {
@@ -75,17 +80,35 @@ export default {
   display: grid
   grid-template-rows: auto 1fr auto
   place-items: center
+  // transition: all 0.3s 0.1s ease
 .ag-header
-  transition: all 0.3s 0.1s ease
+  transition: padding-top 0.3s 0.1s ease
 .is-page
+  padding-top: 64px
+  .ag-body
+    height: 100%
+    width: 100%
   .ag-header
+    position: fixed
     padding-top: 24px
+    top: 0
+    background-color: var(--bg-color)
+    border-bottom: 1px solid var(--bg-border-color)
   >>> .ag-nav
     justify-self: end
   .ag-home
-    position: absolute
+    position: fixed
     left: 24px
     top: 12px
+    margin-bottom: 0
     >>> h1
       font-size: 18px
+      text-align: left
+      margin-bottom: 0
+      margin-top: 4px
+    >>> h4
+      margin-bottom: 0
+      margin-left: -2px
+      margin-top: 2px
+      font-size: 12px
 </style>

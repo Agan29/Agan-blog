@@ -57,6 +57,7 @@ export default {
   // width: 100%
   grid-column-start: 2
   justify-self: center
+  will-change: transform, filter
   // text-align: right
   a
     font-size: 14px

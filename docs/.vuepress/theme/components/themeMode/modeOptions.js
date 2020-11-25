@@ -6,6 +6,7 @@ const modeOptions = {
     "--secondary-text": "#8e8787",
     "--primary-text": "#292525",
     "--bg-color": "#F9F5F0",
+    "--bg-border-color": "#ece5db",
     "--card-color": "#ffffff",
     "--border-color": "#e5e5e5",
     "--box-shadow": "rgba(34, 36, 38, 0.15)",
