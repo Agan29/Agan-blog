@@ -32,6 +32,7 @@ export default {
   data() {
     return {
       handleAnimate: true,
+      delay: 0,
     }
   },
   computed: {
@@ -46,10 +47,13 @@ export default {
   updated() {
     this.$nextTick(function () {
       if (this.handleAnimate) {
-        handleWatch({ component: this.$refs.home })
-        handleWatch({ component: this.$refs.agHeader })
-        // 动画执行完成修改值
-        this.handleAnimate = false
+        // this.$refs.home.delay = 50
+        setTimeout(() => {
+          handleWatch({ component: this.$refs.home })
+          handleWatch({ component: this.$refs.agHeader })
+          // 动画执行完成修改值
+          this.handleAnimate = false
+        }, 1)
       }
       // Code that will run only after the
       // entire view has been re-rendered
@@ -64,11 +68,17 @@ export default {
   watch: {
     // 监听是不是跳转或者从 home 页面跳转过来
     "$frontmatter.home": function (newV, oldV) {
-      // undefined === undefined 的时候表示不是来自 home 或者跳转到 home
+      // console.log(newV)
+      // // undefined === undefined 的时候表示不是来自 home 或者跳转到 home
       if (newV === oldV) {
         this.handleAnimate = false
       } else {
         this.handleAnimate = true
+      }
+      if (newV) {
+        this.$refs.home.delay = 0
+      } else {
+        this.$refs.home.delay = 50
       }
     },
   },
@@ -77,16 +87,23 @@ export default {
 <style lang="stylus" scoped>
 .ag-container
   min-height: 100vh
-  display: grid
-  grid-template-rows: auto 1fr auto
-  place-items: center
+  // display: grid
+  // grid-template-rows: auto 1fr auto
+  // place-items: center
   // transition: all 0.3s 0.1s ease
 .ag-header
   transition: padding-top 0.3s 0.1s ease
+.ag-body
+  height: calc(100vh - 200px)
+  width: 100%
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 .is-page
   padding-top: 64px
   .ag-body
-    height: 100%
+    height: 100vh
     width: 100%
   .ag-header
     position: fixed
@@ -106,9 +123,13 @@ export default {
       text-align: left
       margin-bottom: 0
       margin-top: 4px
+      letter-spacing: 3px
+      transition: font-size 0.3s 0.45s ease
     >>> h4
       margin-bottom: 0
       margin-left: -2px
       margin-top: 2px
       font-size: 12px
+      letter-spacing: 0px
+      transition: font-size 0.3s 0.45s ease
 </style>

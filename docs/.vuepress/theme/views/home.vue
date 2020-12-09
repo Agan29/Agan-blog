@@ -49,16 +49,17 @@ export default {
   place-items: center
   transform: translateX(0)
   will-change: transform, filter
+  position: absolute
   .ag-header
     display: flex
     padding: 6vh 0 2vh 0
   h1
     font-family: TrebuchetMS
-    font-size: 24px
+    font-size: 32px
     color: var(--main-color)
     letter-spacing: 8px
     text-align: center
-    transition: all 0.3s ease
+    transition: all 0.3s 0.65s ease-in
   h4
     opacity: 0.3
     font-size: 14px
@@ -67,5 +68,5 @@ export default {
     text-align: center
     margin-bottom: 16vh
     font-weight: normal
-    transition: all 0.3s ease
+    transition: all 0.3s 0.65s ease-in
 </style>

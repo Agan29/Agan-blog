@@ -39,7 +39,7 @@ $sideWitdh = 256px
   height: 100%
   width: $sideWitdh
   position: fixed
-  top: 62px
+  // top: 62px
 .ag-main
   margin-left: $sideWitdh
 .ag-content

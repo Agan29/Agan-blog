@@ -10,6 +10,7 @@ export const handleAnimate = {
       before: {},
       after: {}
     }
+    this.delay = 0
 
     return {}
   },
@@ -51,12 +52,22 @@ export const handleAnimate = {
           ...animateKeyframes.after
         }
       ]
-
-      animateRef.animate(keyframes, {
+      // animateRef.style.transform = `translate(${oldPos.left -
+      //   newPos.left}px,${oldPos.top - newPos.top}px)`
+      const animation = animateRef.animate(keyframes, {
         duration: animateOpt.duration || 700,
         fill: "forwards",
-        easing: "ease"
+        easing: "ease",
+        // delay: this.delay || 0,
+        fill: "forwards"
       })
+      console.log(this.delay)
+
+      animation.play()
+      animation.pause()
+      setTimeout(() => {
+        animation.play()
+      }, this.delay)
     }
   }
 }
