@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
+    "docs:dev": "vuepress dev docs --no-clear-screen",
     "docs:build": "vuepress build docs"
   },
   "author": "",

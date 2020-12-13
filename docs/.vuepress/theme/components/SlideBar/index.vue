@@ -31,8 +31,10 @@ export default {
 </script>
 <style lang='stylus' scoped>
 .ag-slide-panel
-  padding: 16px
+  padding: 16px 0
   overflow-y: auto
 .slide-item
-  padding: 8px 0 8px 0
+  padding: 8px 16px
+  background-color: var(--bg-color)
+  overflow: hidden
 </style>

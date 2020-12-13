@@ -2,7 +2,7 @@
   <div class="ag-container" :class="{ 'is-page': !isHome }">
     <AgHeader ref="agHeader" />
     <div class="ag-body">
-      <Home ref="home" />
+      <Slogn ref="slogn" />
       <transition name="fade" mode="in-out">
         <AgPage v-if="$route.path !== '/'"></AgPage>
       </transition>
@@ -17,7 +17,7 @@
 import GlobalFooter from "@theme/global-components/GlobalFooter"
 import AgHeader from "@theme/components/AgHeader"
 
-import Home from "@theme/views/home"
+import Slogn from "@theme/components/Slogn"
 import AgPage from "@theme/views/AgPage"
 
 import { handleWatch } from "./_utils"
@@ -26,7 +26,7 @@ export default {
   components: {
     GlobalFooter,
     AgHeader,
-    Home,
+    Slogn,
     AgPage,
   },
   data() {
@@ -49,7 +49,7 @@ export default {
       if (this.handleAnimate) {
         // this.$refs.home.delay = 50
         setTimeout(() => {
-          handleWatch({ component: this.$refs.home })
+          handleWatch({ component: this.$refs.slogn })
           handleWatch({ component: this.$refs.agHeader })
           // 动画执行完成修改值
           this.handleAnimate = false
@@ -76,9 +76,9 @@ export default {
         this.handleAnimate = true
       }
       if (newV) {
-        this.$refs.home.delay = 0
+        this.$refs.slogn.delay = 0
       } else {
-        this.$refs.home.delay = 50
+        this.$refs.slogn.delay = 50
       }
     },
   },
@@ -114,7 +114,7 @@ export default {
     border-bottom: 1px solid var(--bg-border-color)
   >>> .ag-nav
     justify-self: end
-  .ag-home
+  .ag-slogn
     position: fixed
     left: 24px
     top: 12px

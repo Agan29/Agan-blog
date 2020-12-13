@@ -1,5 +1,5 @@
 <template>
-  <div class="ag-home" ref="logo">
+  <div class="ag-slogn" ref="logo">
     <h1>{{ title }}</h1>
     <h4>{{ des }}</h4>
 
@@ -11,7 +11,7 @@
 import { handleAnimate } from "@theme/components/mixins"
 import { random } from "lodash"
 export default {
-  name: "home",
+  name: "slogn",
   components: {},
   mixins: [handleAnimate],
   data() {
@@ -45,11 +45,12 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-.ag-home
+.ag-slogn
   place-items: center
   transform: translateX(0)
   will-change: transform, filter
   position: absolute
+  z-index: 10086
   .ag-header
     display: flex
     padding: 6vh 0 2vh 0

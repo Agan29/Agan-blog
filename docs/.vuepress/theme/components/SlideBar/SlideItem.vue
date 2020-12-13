@@ -7,23 +7,28 @@
       >
         {{ value.title }}
       </div>
-      <transition name="fade">
+      <DropdownTransition>
         <ul class="slide-menus" v-show="isOpened">
           <li v-for="children in value.children" class="slide-menu">
             <SlideItem :value="children"></SlideItem>
           </li>
         </ul>
-      </transition>
+      </DropdownTransition>
     </template>
     <template v-else>
-      <router-link :to="value.path">{{ value.title }}</router-link>
+      <router-link
+        :to="value.path"
+        v-if="!(value.frontmatter.article === false)"
+        >{{ value.title }}
+      </router-link>
     </template>
   </div>
 </template>
 <script>
+import DropdownTransition from "@theme/components/DropdownTransition"
 export default {
   name: "SlideItem",
-  components: {},
+  components: { DropdownTransition },
   props: {
     value: {
       type: Object,
@@ -55,7 +60,7 @@ export default {
   font-weight: bold
   display: flex
   align-items: center
-  opacity: 0.8
+  opacity: 1
   &.is-opened
     &:after
       transform: rotate(90deg)
@@ -75,8 +80,10 @@ export default {
     transition: all 0.3s ease
 .slide-menus
   padding: 8px 0 8px 24px
+  transition: height 0.3s ease
+  // overflow: hidden
   .slide-menu-item
-    opacity: 0.7
+    opacity: 1
 .slide-link a, .slide-menu .slide-title
   font-size: $font-size-sm
   font-weight: normal

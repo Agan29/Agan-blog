@@ -125,7 +125,6 @@ function resolvePath(relative, base, append) {
  */
 export function resolveSidebarItems(page, regularPath, site, localePath) {
   const { pages, themeConfig } = site
-
   const localeConfig =
     localePath && themeConfig.locales
       ? themeConfig.locales[localePath] || themeConfig
@@ -136,8 +135,8 @@ export function resolveSidebarItems(page, regularPath, site, localePath) {
   if (pageSidebarConfig === "auto") {
     return resolveHeaders(page)
   }
-
   const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
+
   if (!sidebarConfig) {
     return []
   } else {
@@ -233,6 +232,7 @@ function resolveItem(item, pages, base, groupDepth = 1) {
         title: item.title
       })
     }
+    // console.log(item)
     return {
       type: "group",
       path: item.path,
