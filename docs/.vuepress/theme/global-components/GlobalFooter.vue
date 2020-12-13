@@ -30,7 +30,7 @@ export default {
   grid-template-rows: auto auto auto
   place-items: center
   padding: 16px 0 32px 0
-  font-size: 14px
+  font-size: 12px
   color: var(--main-color)
   line-height: 1
   .supporting

@@ -53,6 +53,7 @@ export default {
   display: grid
   grid-template-columns: 60px auto 60px
   width: 100%
+  z-index: 999
 .ag-nav
   // width: 100%
   grid-column-start: 2
@@ -71,6 +72,9 @@ export default {
     transition: all 0.3s ease
     &:hover
       opacity: 1
+    &.router-link-exact-active
+      opacity: 1
+      -webkit-text-emphasis-style: dot
 .theme-mode
   // position: absolute
   // right: 3vw

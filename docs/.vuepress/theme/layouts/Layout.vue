@@ -94,7 +94,7 @@ export default {
 .ag-header
   transition: padding-top 0.3s 0.1s ease
 .ag-body
-  height: calc(100vh - 200px)
+  min-height: calc(100vh - 200px)
   width: 100%
   display: flex
   flex-direction: column
@@ -103,8 +103,9 @@ export default {
 .is-page
   padding-top: 64px
   .ag-body
-    height: 100vh
+    min-height: 100vh
     width: 100%
+    justify-content: flex-start
   .ag-header
     position: fixed
     padding-top: 24px

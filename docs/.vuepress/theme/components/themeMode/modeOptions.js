@@ -2,10 +2,11 @@
 const modeOptions = {
   light: {
     "--main-color": "#281405",
+    "--main-color-2": "rgb(40 20 5 / 20%)",
     "--regular-text": "#4c4e4d",
     "--secondary-text": "#8e8787",
     "--primary-text": "#292525",
-    "--bg-color": "#F9F5F0",
+    "--bg-color": "#f7fafb",
     "--bg-border-color": "#ece5db",
     "--card-color": "#ffffff",
     "--border-color": "#e5e5e5",

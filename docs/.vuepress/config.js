@@ -7,8 +7,12 @@ module.exports = {
     nav: [
       { text: "首页", link: "/" },
       { text: "设计", link: "/design/" },
-      { text: "前端", link: "/front-end/" },
+      {
+        text: "前端",
+        link: "/front-end/"
+      },
       { text: "其他", link: "https://google.com" }
-    ]
+    ],
+    sidebar: "structuring"
   }
 }

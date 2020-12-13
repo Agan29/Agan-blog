@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.0",
     "dayjs": "^1.9.6",
+    "gray-matter": "^4.0.2",
+    "json2yaml": "^1.1.0",
     "lodash": "^4.17.20",
     "vuepress": "^1.7.1"
   },
