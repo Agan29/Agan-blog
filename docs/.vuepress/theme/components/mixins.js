@@ -40,14 +40,14 @@ export const handleAnimate = {
 
       const keyframes = [
         {
-          transform: `translate(${oldPos.left - newPos.left}px,${oldPos.top -
-            newPos.top}px)`,
+          transform: `translate3d(${oldPos.left - newPos.left}px,${oldPos.top -
+            newPos.top}px,0)`,
           filter: `blur(${animateOpt.blur || 6}px)`,
           // 其他设置的动画
           ...animateKeyframes.before
         },
         {
-          transform: `translate(0,0)`,
+          transform: `translate3d(0,0,0)`,
           filter: "blur(0px)",
           ...animateKeyframes.after
         }

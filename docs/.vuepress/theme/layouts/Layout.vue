@@ -110,8 +110,8 @@ export default {
     position: fixed
     padding-top: 24px
     top: 0
-    background-color: var(--bg-color)
-    border-bottom: 1px solid var(--bg-border-color)
+    background-color: var(--bg-color-op6)
+    border-bottom: 0.5px solid rgba(0, 0, 0, 8%)
   >>> .ag-nav
     justify-self: end
   .ag-slogn

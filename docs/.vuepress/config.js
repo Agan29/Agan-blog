@@ -14,7 +14,12 @@ module.exports = {
       { text: "设计", link: "/design/" },
       {
         text: "前端",
-        link: "/front-end/"
+        link: "/pages/8143cc480faf9a11/"
+      },
+
+      {
+        text: "随笔",
+        link: "/words/"
       },
       { text: "其他", link: "https://google.com" }
     ],

@@ -54,6 +54,7 @@ export default {
   grid-template-columns: 60px auto 60px
   width: 100%
   z-index: 999
+  backdrop-filter:blur(10px)
 .ag-nav
   // width: 100%
   grid-column-start: 2
@@ -74,7 +75,7 @@ export default {
       opacity: 1
     &.router-link-exact-active
       opacity: 1
-      -webkit-text-emphasis-style: dot
+      // -webkit-text-emphasis-style: dot
 .theme-mode
   // position: absolute
   // right: 3vw

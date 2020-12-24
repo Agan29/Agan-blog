@@ -92,7 +92,7 @@ $sideWitdh = 256px
   // grid-column-start: 2
   // grid-column-end: 4
 .ag-side
-  border-right: 1px solid var(--bg-border-color)
+  border-right: 1px solid rgba(0, 0, 0, 4%)
   height: 100%
   width: $sideWitdh
   position: fixed
