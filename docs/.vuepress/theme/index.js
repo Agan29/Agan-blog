@@ -8,6 +8,10 @@ const log = console.log
 
 module.exports = (themeConfig, ctx) => {
   const { sourceDir, siteConfig } = ctx
+
+  // 自动设置front matter
+  setFrontmatter(sourceDir, themeConfig)
+
   // 自动生成结构化侧边栏
   const sidebar = themeConfig.sidebar
   if (
@@ -32,6 +36,27 @@ module.exports = (themeConfig, ctx) => {
       )
     }
   }
+  // 分类页
+  if (themeConfig.category !== false) {
+    createPage(sourceDir, "categoriesPage")
+  } else {
+    deletePage(sourceDir, "categoriesPage")
+  }
+
+  // 标签页
+  if (themeConfig.tag !== false) {
+    createPage(sourceDir, "tagsPage")
+  } else {
+    deletePage(sourceDir, "tagsPage")
+  }
+
+  // 归档页
+  if (themeConfig.archive !== false) {
+    createPage(sourceDir, "archivesPage")
+  } else {
+    deletePage(sourceDir, "archivesPage")
+  }
+
   const enableSmoothScroll = themeConfig.smoothScroll === true
   // resolve algolia
   //   const isAlgoliaSearch =

@@ -1,9 +1,13 @@
 <template>
   <div class="ag-header">
     <nav class="ag-nav" ref="agnav">
-      <AgRouteLink v-for="n in computedNav" :to="n.link">
-        {{ n.text }}
-      </AgRouteLink>
+      <template v-for="n in computedNav">
+        <AgRouteLink v-if="n.link" :to="n.link">{{ n.text }}</AgRouteLink>
+        <a v-else-if="n.items">
+          {{ n.text }}
+          <!-- TODO: add items menu  -->
+        </a>
+      </template>
     </nav>
     <ThemeMode class="theme-mode" />
   </div>
@@ -54,7 +58,7 @@ export default {
   grid-template-columns: 60px auto 60px
   width: 100%
   z-index: 999
-  backdrop-filter:blur(10px)
+  backdrop-filter: blur(10px)
 .ag-nav
   // width: 100%
   grid-column-start: 2

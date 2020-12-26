@@ -5,17 +5,24 @@
   "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev docs --no-clear-screen",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "editFm": "node utils/editFrontmatter.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vuepress/plugin-nprogress": "^1.7.1",
     "chalk": "^4.1.0",
     "dayjs": "^1.9.6",
     "gray-matter": "^4.0.2",
+    "inquirer": "^7.3.3",
     "json2yaml": "^1.1.0",
     "lodash": "^4.17.20",
-    "vuepress": "^1.7.1"
+    "vuepress": "^1.7.1",
+    "vuepress-plugin-demo-block": "^0.7.2",
+    "vuepress-plugin-one-click-copy": "^1.0.2",
+    "vuepress-plugin-zooming": "^1.1.8",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {}
 }
