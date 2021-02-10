@@ -2,11 +2,13 @@
   <div class="ag-header">
     <nav class="ag-nav" ref="agnav">
       <template v-for="n in computedNav">
-        <AgRouteLink v-if="n.link" :to="n.link">{{ n.text }}</AgRouteLink>
-        <a v-else-if="n.items">
-          {{ n.text }}
-          <!-- TODO: add items menu  -->
-        </a>
+        <span :key="n.link">
+          <AgRouteLink v-if="n.link" :to="n.link">{{ n.text }}</AgRouteLink>
+          <a v-else-if="n.items">
+            {{ n.text }}
+            <!-- TODO: add items menu  -->
+          </a>
+        </span>
       </template>
     </nav>
     <ThemeMode class="theme-mode" />
@@ -21,22 +23,21 @@ export default {
   name: "AgHeader",
   components: {
     AgRouteLink,
-    ThemeMode,
+    ThemeMode
   },
   computed: {
     computedNav() {
+      
       const { nav } = this.$site.themeConfig
-      return this.$frontmatter.home
-        ? nav.filter((nav) => nav.link !== "/")
-        : nav
-    },
+      return this.$frontmatter.home ? nav.filter(nav => nav.link !== "/") : nav
+    }
   },
   mixins: [handleAnimate],
   data() {
     this.animateRef = null
     this.animateOpt = {
-      blur: 3,
-      duration: 600,
+      blur: 0,
+      duration: 50
     }
     return {
       // animate mixin 需要 ref 以及animate配置
@@ -45,10 +46,10 @@ export default {
   mounted() {
     this.animateRef = this.$refs.agnav
   },
-  methods: {},
+  methods: {}
 }
 </script>
-<style lang='stylus' scoped>
+<style lang="stylus" scoped>
 .ag-header
   display: flex
   padding: 6vh 0 2vh 0

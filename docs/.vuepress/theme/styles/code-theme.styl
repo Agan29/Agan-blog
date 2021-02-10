@@ -47,16 +47,20 @@
     color: #999
   .namespace
     opacity: 0.7
-  .token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted
+  .token.property, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted
     color: #53aade
   .token.selector
     color: #d19a66
-  .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted
+  .token.tag
+    color:#22863a
+  .token.attr-name
+    color:#6f42c1
+  .token.string, .token.char, .token.builtin, .token.inserted
     color: #98c379
   .token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string
     color: #14a09b
     // background: hsla(0, 0%, 100%, 0.5)
-  .token.atrule, .token.attr-value, .token.keyword
+  .token.atrule, .token.keyword
     color: #9e16ca
     font-style: italic
   .token.function, .token.class-name
@@ -73,10 +77,11 @@
     font-style: italic
   .token.entity
     cursor: help
-  .token.parameter
-    color: #b12f06
+  .token.parameter, .token.attr-value
+    color: #032f62
+  .token.attr-name,.token.parameter
     font-style: italic
-// 适合深色背景 // @import '~prismjs/themes/prism-tomorrow.css'
+  // 适合深色背景 // @import '~prismjs/themes/prism-tomorrow.css'
 .dark-mode
   code[class*='language-'], pre[class*='language-']
     color: #ccc

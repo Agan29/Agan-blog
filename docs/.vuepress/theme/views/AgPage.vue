@@ -1,7 +1,7 @@
 <template>
   <div class="ag-page">
-    <SlidePanel class="ag-side" :sidebarItems="sidebarItems" />
-    <div class="ag-main">
+    <SlidePanel class="ag-side" :sidebarItems="sidebarItems" v-if="hasSlide" />
+    <div class="ag-main" :class="{'without-sidebar':!hasSlide}">
       <div class="ag-content">
         <transition name="fade">
           <Content />
@@ -23,6 +23,7 @@ export default {
   },
   computed: {
     sidebarItems() {
+     
       return resolveSidebarItems(
         this.$page,
         this.$page.regularPath,
@@ -72,12 +73,16 @@ export default {
         })
       })
     },
+    hasSlide(){
+ 
+      return this.sidebarItems.length >1
+    }
   },
   data() {
     return {}
   },
   mounted() {
-    console.log(this.$page)
+    // console.log(this.$page)
   },
 }
 </script>
@@ -92,13 +97,16 @@ $sideWitdh = 256px
   // grid-column-start: 2
   // grid-column-end: 4
 .ag-side
-  border-right: 1px solid rgba(0, 0, 0, 4%)
+  // border-right: 1px solid rgba(0, 0, 0, 4%)
   height: 100%
   width: $sideWitdh
   position: fixed
   // top: 62px
 .ag-main
   margin-left: $sideWitdh
+  &.without-sidebar{
+    margin-left:0
+  }
 .ag-content
   padding: 16px
   width: 80%

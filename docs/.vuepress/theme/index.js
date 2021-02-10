@@ -66,6 +66,7 @@ module.exports = (themeConfig, ctx) => {
   //     )
 
   return {
+    extend: '@vuepress/theme-default',
     alias() {
       //   return {
       //     "@AlgoliaSearchBox": isAlgoliaSearch

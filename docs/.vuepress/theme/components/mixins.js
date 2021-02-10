@@ -3,7 +3,7 @@ export const handleAnimate = {
   data() {
     this.posState = []
     this.animateOpt = {
-      blur: 3,
+      blur: 0,
       duration: 600
     }
     this.animateKeyframes = {
@@ -37,12 +37,12 @@ export const handleAnimate = {
     handleAnimate() {
       const { animateRef, animateOpt, animateKeyframes } = this
       const [oldPos, newPos] = this.posState
-
+      console.log(animateOpt)
       const keyframes = [
         {
           transform: `translate3d(${oldPos.left - newPos.left}px,${oldPos.top -
             newPos.top}px,0)`,
-          filter: `blur(${animateOpt.blur || 6}px)`,
+          filter: `blur(${animateOpt.blur ?? 6}px)`,
           // 其他设置的动画
           ...animateKeyframes.before
         },
@@ -61,13 +61,12 @@ export const handleAnimate = {
         // delay: this.delay || 0,
         fill: "forwards"
       })
-      console.log(this.delay)
 
       animation.play()
-      animation.pause()
-      setTimeout(() => {
-        animation.play()
-      }, this.delay)
+      // animation.pause()
+      // setTimeout(() => {
+      //   animation.play()
+      // }, this.delay)
     }
   }
 }

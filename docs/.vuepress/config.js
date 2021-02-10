@@ -1,4 +1,5 @@
 const nav = require("./config/nav.js")
+const extendMarkdown = require("./config/extendMarkdown.js")
 
 module.exports = {
   base: "/Agan-blog/",
@@ -30,6 +31,13 @@ module.exports = {
     nav,
     sidebar: "structuring"
   },
+  markdown: {
+    // plugins: markdownPlugins,
+    extendMarkdown: extendMarkdown
+  },
+  extraWatchFiles: [
+    ".vuepress/config/extendMarkdown.js" // 使用相对路径
+  ],
   plugins: [
     [
       "one-click-copy",
